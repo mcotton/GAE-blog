@@ -27,6 +27,20 @@ class o(webapp.RequestHandler):
   def get(self):
     render_template(self, 'templates/on-call.html')
     
+class PartialHandler(webapp.RequestHandler):
+  def get(self, resource=''):
+    #Did anything come in on the url /partial/:resource
+    if resource:  
+      posts = Blog().gql("where tag = :1 order by date desc", resource).fetch(1)
+      if posts:
+        for p in posts:
+          self.response.out.write('<div class=\'block-3\'><p>' + p.content + '</p></div>')
+      else:
+        self.response.out.write('There is nothing in the database about ' + resource)  
+    else:
+      self.response.out.write('Content not found')
+      
+    
 class BlogHandler(webapp.RequestHandler):
   def get(self, resource=''):
   
@@ -91,7 +105,8 @@ def main():
                                         ('/assist', a),
                                         ('/on-call', o),
                                         ('/blog/([^/]+)?', BlogHandler),
-                                        ('/blog', BlogHandler)],
+                                        ('/blog', BlogHandler),
+                                        ('/partial/([^/]+)?', PartialHandler)],
                                          debug=True)
                                          
   wsgiref.handlers.CGIHandler().run(application)
