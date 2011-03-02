@@ -1,0 +1,31 @@
+application: mcottondesign3
+version: clean-1
+runtime: python
+api_version: 1
+
+builtins:
+- datastore_admin: on
+
+derived_file_type:
+- python_precompiled
+
+handlers:
+- url: /images
+  static_dir: templates/_images
+
+- url: /css
+  static_dir: templates/_css
+  
+- url: /js
+  static_dir: templates/_js
+
+- url: /favicon.ico
+  static_files: templates/_images/favicon.ico
+  upload: templates/_images/favicon.ico
+  
+- url: /robots.txt
+  static_files: templates/_images/robots.txt
+  upload: templates/_images/favicon.ico
+
+- url: /.*
+  script: main.py

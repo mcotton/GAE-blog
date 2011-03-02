@@ -1,0 +1,75 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<html> 
+  <head> 
+    <title>mcottondesign</title> 
+        <link href="/css/style.css" type="text/css" rel="stylesheet"> 
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+  </head> 
+  <body> 
+    {% block container %}
+	{% endblock %}
+	
+	<div id="robot">
+        <!--
+        <img src="/images/robot.png" width="115">
+        -->
+    </div>
+    
+    <div id="result"></div> 
+	
+{% block footer %}
+    <div id='footer'>
+        <span> 
+            <a href="/">home</a> <b>||</b>
+            <a href="/blog">blog</a> <b>||</b>
+            <a href="/blog/contact">contact</a>
+        </span> 
+      </div>
+{% endblock %}
+
+    <script type="text/javascript">
+    
+    $(document).ready(function() {
+    	console.log('jQuery is ready');
+    	
+    	$('.block-2 a').click(function(event) {
+        	event.preventDefault();
+        });
+    	
+    	$('#col_1').click(function() {
+            $('#col_2').fadeOut('slow');
+            $('#col_3').fadeOut('slow');
+            
+            setTimeout(function() {
+            	$('#result').load('/images/on-call.partial')
+            	}, 1500);
+            
+    	   });
+    	   
+        $('#col_2').click(function() {
+            $('#col_1').hide('slow');
+            $('#col_3').hide('slow');
+
+            setTimeout(function() {
+            	$('#result').load('/images/on-call.partial')
+            	}, 1500);    	   
+    	   
+    	   });
+    	   
+        $('#col_3').click(function() {
+            $('#col_1').hide('slow');
+            $('#col_2').hide('slow');
+    	   
+            setTimeout(function() {
+            	$('#result').load('/images/on-call.partial')
+            	}, 1500);    	   
+    	   
+    	   });
+    	   
+        
+    });
+    
+    </script>
+  </body> 
+</html> 

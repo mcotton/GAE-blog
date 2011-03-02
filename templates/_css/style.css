@@ -1,0 +1,137 @@
+
+
+  html {
+    background: #fff; }
+  
+  body {
+    margin: 0;
+    padding-top: 45px;
+    font: 14px/1.4 "Myriad Pro", "Helvetica Nueue", "Lucida Grande", "Arial", sans-serif;
+    background: -webkit-gradient(linear, left top, left bottom, from(#f8f8f8), to(#fff));
+    text-align: center;
+    -webkit-text-stroke: 0.1px #fff;
+    -moz-text-stroke: 0.2px #fff;
+    color: #333; }
+  
+  #container {
+    position: relative;
+    margin: 0 auto 0 auto;
+    padding-left: 10px;
+    width: 800px;
+    text-align: left; }
+  
+  #footer {
+    position: fixed;
+    bottom: 0;
+    padding: 10px 0;
+    width: 100%;
+    text-align: center;
+    font-size: 11px;
+    clear: both;
+    height:30px;
+    background: #f8f8f8; 
+    }
+	
+  #ribbon {
+    position: absolute;
+    top: 0;
+    right: 0; }
+    #ribbon img {
+      border: none; }
+  
+  #logo {
+    font-size: 45px;
+    font-weight: bold;
+    -webkit-text-stroke: 0.5px #fff;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2); }
+  
+  .block-2 {
+    padding: 0 20px 0 0;
+    width: 230px;
+    float: left; }
+    
+  .block-3 {
+    padding: 0 20px 0 0;
+    width: 400px;
+    float: left; }
+  
+  .blog-content {
+    padding: 0 20px 0 0;
+    width: 530px;
+    float: left; }
+    
+  .blog-sidebar {
+    padding: 0 20px 0 0;
+    width: 100px;
+    float: left; }
+  
+  .blog-sidebar a  {
+    text-decoration: none;
+    font: 14px/1.4 "Myriad Pro", "Helvetica Nueue", "Lucida Grande", "Arial", sans-serif;
+    background: -webkit-gradient(linear, left top, left bottom, from(#f8f8f8), to(#fff));
+    text-align: left;
+    -webkit-text-stroke: 0.1px #fff;
+    -moz-text-stroke: 0.2px #fff;
+    color: #333; }
+  
+  h1 {
+    margin: 0;
+    position: absolute;
+    top: 48px;
+    left: 3px;
+    font-size: 12px;
+    font-weight: normal; }
+    
+  h1 a {
+    font-size: 12px;
+    font-weight: normal;
+    text-decoration: none;
+    color:#333; }
+  
+  h2 {
+    margin-top: 25px;
+    font-size: 16px; }
+  
+  pre {
+    padding: 5px 10px;
+    border: 1px solid #eee;
+    -webkit-box-shadow: 1px 1px 1px #fff;
+    -moz-box-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    background: #fff; }
+  
+  code {
+    font-family: "Courier", monospace;
+    background: #fff; }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #eee;
+    -webkit-box-shadow: 1px 1px 1px #fff;
+    -moz-box-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    background: #fff; }
+    table tr {
+      border-bottom: 1px solid #eee; }
+    table tr:last-child {
+      border-bottom: none; }
+    table tr:nth-child(even) {
+      background: #f8f8f8; }
+    table td {
+      padding: 5px 10px; }
+      table td:nth-child(2) {
+        text-align: right; }
+  
+  a {
+    color: #883980;
+    font-weight: bold; }
+    
+  #robot  {
+    position: absolute;
+    z-index: 100;
+    top: 500px;;
+    left: 20px;
+  }

@@ -1,0 +1,67 @@
+{% extends "template.html" %}
+
+{% block container %}
+    <div id='container'> 
+      <span id='logo'>shouting</span> 
+      <div id='primary'> 
+        <h1> 
+          <a href="/">&nbsp;&nbsp;&nbsp;&nbsp;by subtle controls</a>
+        </h1>
+        <!-- <h1>{{ resource }}</h1> --> 
+        <div class='blog-content'> 
+          {% for p in posts %}
+          <div class='posts'>
+          <h2>{{ p.title }}</h2> 
+          <p>
+            {{ p.content }}
+          </p>
+          </div>
+          {% endfor %}
+          
+        <div class='posts'>
+            {% if admin %}
+		    <form id="comment_form" action="/blog/" method="post"> 
+				<h3>Post Something New</h3>
+						<label for="title">Title</label> 
+						<input id="title" name="title" type="text" /> 
+					<br> 
+						<label for="category">Category</label> 
+						<input id="category" name="category" type="text" /> 
+					<br>  
+						<label for="body">Body</label> 
+						<textarea id="body" name="body" rows="3" cols="40"></textarea> 
+					<br> 
+						<!-- Add Comment Button -->
+						<label for="Publish">Add new posts</label>
+						<input type="submit" class="" name="Publish">
+					<br> 
+			</form> 
+			{% endif %}
+			<br><br><br><br> <!-- this is so the blog post isn't behind the footer -->
+            &nbsp; <!-- this is to make sure the div always has something in it -->
+          </div>
+        </div> 
+        <div class='blog-sidebar'> 
+          <h2></h2> 
+          <table id='stats'> 
+            {% for t in tags %}
+            <tr>  
+              <td><a href='/blog/{{ t.title|lower }}'>{{ t.title }}</a></td> 
+            </tr> 
+            {% endfor %}
+          </table> 
+        </div> 
+      </div> 
+    </div>
+{% endblock %}
+
+{% block footer %} 
+      <div id='footer'>  
+        <span>
+            <a href="/">home</a> <b>||</b>
+            <a href="/blog">blog</a> <b>||</b>
+            <a href="/blog/contact">contact</a> <b>||</b>
+            <a href="{{ admin_url }}">{{ admin_url_text }}</a> 
+        </span> 
+      </div>  
+{% endblock %}
