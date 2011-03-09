@@ -2,7 +2,7 @@
 
 {% block container %}
     <div id='container'> 
-      <span id='logo'>/blog/:id</span> 
+      <span id='logo'>/blog</span> 
       <div id='primary'> 
         <h1> 
           <a href="/">&nbsp;&nbsp;&nbsp;&nbsp;by mcottondesign</a>
@@ -10,12 +10,14 @@
         <!-- <h1>{{ resource }}</h1> --> 
         <div class='blog-content'> 
           {% for p in posts %}
-          <div class='posts'>
-          <h2>{{ p.title }}</h2> 
-          <p>
-            {{ p.content }}
-          </p>
-          </div>
+            {% if p.title %}
+              <div class='posts'>
+                  <h2>{{ p.title }}</h2> 
+                  <p>
+                    {{ p.content }}
+                  </p>
+              </div>
+            {% endif %}
           {% endfor %}
           
         <div class='posts'>
