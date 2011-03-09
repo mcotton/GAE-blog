@@ -1,5 +1,4 @@
 
-
   html {
     background: #fff; }
   
@@ -32,13 +31,6 @@
     background: #f8f8f8; 
     }
 	
-  #ribbon {
-    position: absolute;
-    top: 0;
-    right: 0; }
-    #ribbon img {
-      border: none; }
-  
   #logo {
     font-size: 45px;
     font-weight: bold;
@@ -129,9 +121,3 @@
     color: #883980;
     font-weight: bold; }
     
-  #robot  {
-    position: absolute;
-    z-index: 100;
-    top: 500px;;
-    left: 20px;
-  }
