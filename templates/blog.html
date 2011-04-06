@@ -4,10 +4,8 @@
     <div id='container'> 
       <span id='logo'>/blog</span> 
       <div id='primary'> 
-        <h1> 
-          <a href="/">&nbsp;&nbsp;&nbsp;&nbsp;by mcottondesign</a>
-        </h1>
-        <!-- <h1>{{ resource }}</h1> --> 
+        <h1><a href="/">&nbsp;&nbsp;&nbsp;&nbsp;by mcottondesign</a></h1>
+          
         <div class='blog-content'> 
           {% for p in posts %}
             {% if p.title %}
@@ -22,21 +20,46 @@
           
         <div class='posts'>
             {% if admin %}
+            <script type="text/javascript" src="/js/showdown.js"></script>
+            <script type="text/javascript"> 
+              $(function() {
+                var converter = new Showdown.converter();
+                $("#user_input").keyup(function(){
+                  var txt = $("#user_input").val();
+                  var html = converter.makeHtml(txt);
+                  $(".wikistyle").html(html)
+         
+                });
+              });
+              
+              $(document).ready(function() {
+              	$('#html_preview').hide();
+              	$('#show_html').click(function(event) {
+                    event.preventDefault();	
+                    $('#html_preview').toggle();
+              	});
+              });
+            </script> 
+            
+            
+            <br>
 		    <form id="comment_form" action="/blog/" method="post"> 
 				<h3>Post Something New</h3>
-						<label for="title">Title</label> 
-						<input id="title" name="title" type="text" /> 
-					<br> 
-						<label for="category">Category</label> 
-						<input id="category" name="category" type="text" /> 
-					<br>  
-						<label for="body">Body</label> 
-						<textarea id="body" name="body" rows="3" cols="40"></textarea> 
-					<br> 
-						<!-- Add Comment Button -->
-						<label for="Publish">Add new posts</label>
-						<input type="submit" class="" name="Publish">
-					<br> 
+						<p><input id="title" name="title" placeholder="Title" type="text" size="83"/></p>
+						<p><input id="category" placeholder="Category" name="category" type="text"  size="83"/></p>
+                      <div id="entry-container"> 
+                        <p><textarea id="user_input" placeholder="Enter Markdown" rows="10" cols="60"></textarea>
+                        
+                        <h6><a href="#" id="show_html">toggle html preview</a></h6>
+                        
+                        </p>
+                      </div> 
+                      <div id="html_preview">
+				      <p><textarea id="textbody" placeholder="HTML Preview" name="body" rows="10" cols="60" class="wikistyle"></textarea></p>
+				      </div>
+				    <br>
+				      <!-- Add Comment Button -->
+				      <input type="submit" class="" name="Publish" value="Publish">
 			</form> 
 			{% endif %}
 			<br><br><br><br> <!-- this is so the blog post isn't behind the footer -->
