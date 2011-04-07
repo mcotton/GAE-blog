@@ -10,10 +10,18 @@
           {% for p in posts %}
             {% if p.title %}
               <div class='posts'>
-                  <h2>{{ p.title }}</h2> 
-                  <p>
+                  
+                  <h2>{{ p.title }}</h2>
+                  <div style="top: -20px; position: relative; font-size: 12px;">
+                    Tag: {{ p.tag }}
+                    {% if admin %}
+                      || <a href="/edit?id={{ p.key.id }}">edit</a>
+                      || <a href="/delete?id={{ p.key.id }}">remove</a>
+                    {% endif %}
+                  </div>
+                  <div style="margin-top: -20px;">
                     {{ p.content }}
-                  </p>
+                  </div>
               </div>
             {% endif %}
           {% endfor %}

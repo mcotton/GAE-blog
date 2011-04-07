@@ -55,9 +55,11 @@ class BlogHandler(webapp.RequestHandler):
     
     #Did anything come in on the url /blog/:resource
     if resource:  
-      posts = Blog().gql("where tag = :1 order by date desc", resource).fetch(10)
+      posts = Blog().gql("where tag = :1 order by date desc", resource).fetch(15)
+      if len(posts) == 0:
+        posts = Blog().gql("order by date desc").fetch(15)
     else:
-      posts = Blog().gql("order by date desc").fetch(10)
+      posts = Blog().gql("order by date desc").fetch(15)
     
     #Build the SideBar
     tags = SideBar().gql("order by title asc").fetch(20)
@@ -83,9 +85,9 @@ class BlogHandler(webapp.RequestHandler):
       s = SideBar()
       b.title = self.request.get("title")
       b.content = self.request.get("body")
-      b.tag = self.request.get("category")
-      s.path = self.request.get("category")
-      s.title = self.request.get("category")
+      b.tag = self.request.get("category").lower()
+      s.path = self.request.get("category").lower()
+      s.title = self.request.get("category").lower()
       #this is weird, but this is a batch put to the datastore
       updated = []
       updated.append(b)
