@@ -3,8 +3,9 @@
 <html> 
   <head> 
     <title>mcottondesign</title> 
-        <link href="/css/style.css" type="text/css" rel="stylesheet"> 
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+        <link href="/css/style.css" type="text/css" rel="stylesheet">
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+        <script type="text/javascript" src="/js/app.js"></script>
   </head> 
   <body> 
     {% block container %}
@@ -22,50 +23,8 @@
         </span> 
       </div>
 {% endblock %}
-
-    <script type="text/javascript">
     
-    $(document).ready(function() {
-    	console.log('jQuery is ready');
-    	
-    	$('.block-2 a').click(function(event) {
-        	event.preventDefault();
-        });
-    	
-    	$('#col_1').click(function() {
-            $('#col_2').fadeOut('slow');
-            $('#col_3').fadeOut('slow');
-            
-            setTimeout(function() {
-            	$('#result').load('/partial/past')
-            	}, 500);
-            
-    	   });
-    	   
-        $('#col_2').click(function() {
-            $('#col_1').hide('slow');
-            $('#col_3').hide('slow');
-
-            setTimeout(function() {
-            	$('#result').load('/partial/current')
-            	}, 500);    	   
-    	   
-    	   });
-    	   
-        $('#col_3').click(function() {
-            $('#col_1').hide('slow');
-            $('#col_2').hide('slow');
-    	   
-            setTimeout(function() {
-            	$('#result').load('/partial/future')
-            	}, 500);    	   
-    	   
-    	   });
-    	   
-        
-    });
     
-    </script>
     <script type="text/javascript">
     
       var _gaq = _gaq || [];
