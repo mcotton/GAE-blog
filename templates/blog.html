@@ -13,10 +13,10 @@
                   
                   <h2>{{ p.title }}</h2>
                   <div style="top: -20px; position: relative; font-size: 12px;">
-                    Tag: {{ p.tag }}
+                    {{ p.date|date }} &nbsp;&nbsp;
+                    <a href="/blog/{{ p.tag }}">{{ p.tag }}</a> 
                     {% if admin %}
-                      || <a href="/edit?id={{ p.key.id }}">edit</a>
-                      || <a href="/delete?id={{ p.key.id }}">remove</a>
+                      || <a href="/delete/{{ p.key }}">remove</a>
                     {% endif %}
                   </div>
                   <div style="margin-top: -20px;">
@@ -82,6 +82,9 @@
               <td><a href='/blog/{{ t.title|lower }}'>{{ t.title }}</a></td> 
             </tr> 
             {% endfor %}
+            <tr>  
+              <td><a href='/blog'>All Posts</a></td> 
+            </tr>
           </table> 
         </div> 
       </div> 
