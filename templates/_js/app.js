@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	console.log('jQuery is ready');
+	//console.log('jQuery is ready');
 	
 	$('.block-2 a').click(function(event) {
     	event.preventDefault();
