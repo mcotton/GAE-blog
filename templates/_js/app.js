@@ -20,7 +20,7 @@ $(document).ready(function() {
         
         setTimeout(function() {
         	$('#result').load('/partial/past')
-        	}, 500);
+        	},250);
         
 	   });
 	   
@@ -33,7 +33,7 @@ $(document).ready(function() {
         
         setTimeout(function() {
         	$('#result').load('/partial/current')
-        	}, 500);    	   
+        	}, 250);    	   
 	   
 	   });
 	   
@@ -46,7 +46,7 @@ $(document).ready(function() {
         
         setTimeout(function() {
         	$('#result').load('/partial/future')
-        	}, 500);    	   
+        	}, 250);    	   
 	   
 	   });
 	   
