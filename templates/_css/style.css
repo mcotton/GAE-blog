@@ -45,7 +45,15 @@
   .block-3 {
     padding: 0 20px 0 0;
     width: 400px;
-    float: left; }
+    float: left;
+    text-alight: left;}
+    
+  #partial {
+    padding: 0 0px 0 0;
+    width: 450px;
+    float: left; 
+    text-align: left;
+    }
   
   .blog-content {
     padding: 0 20px 0 0;
