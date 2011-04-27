@@ -23,7 +23,7 @@ class PartialHandler(webapp.RequestHandler):
       posts = Blog().gql("where tag = :1 order by date desc", resource).fetch(1)
       if posts:
         for p in posts:
-          self.response.out.write('<div class=\'block-3\'><p>' + p.content + '</p></div>')
+          self.response.out.write('<div class=\"block-3\" id=\"partial\"><p>' + p.content + '</p></div>')
       else:
         self.response.out.write('There is nothing in the database about ' + resource)  
     else:
