@@ -193,8 +193,20 @@
     
   .blog-content {
     padding: 0 20px 0 0;
-    width: 100%;
-    float: none; }
+    width: 80%;
+    float: none;
+    overflow: hidden; }
+    
+  iframe  {
+    width: 350px;
+    height: 232px;
+  }
+  
+  object  {
+    display: none;
+    width: 350px;
+    height: 232px;
+  }
 
 }
 
