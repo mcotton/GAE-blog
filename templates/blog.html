@@ -33,10 +33,8 @@
               $(function() {
                 var converter = new Showdown.converter();
                 $("#user_input").keyup(function(event){
-                  //alert(event.keyCode);
                   var txt = $("#user_input").val();
                   var html = converter.makeHtml(txt);
-                  //alert(html);
                   $(".wikistyle").val(html)
          
                 });
