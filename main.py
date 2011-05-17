@@ -55,10 +55,10 @@ class BlogHandler(webapp.RequestHandler):
     #Check to see if user is an admin, and display correct link
     admin = users.is_current_user_admin()
     if admin:
-      admin_url = users.create_logout_url("/blog/")
+      admin_url = users.create_logout_url("/blog")
       admin_url_text = 'Logout'
     else:
-      admin_url = users.create_login_url("/blog/")
+      admin_url = users.create_login_url("/blog")
       admin_url_text = 'Login'
     
     #Did anything come in on the url /blog/:resource
@@ -103,7 +103,7 @@ class BlogHandler(webapp.RequestHandler):
       updated.append(s)
       db.put(updated)
     
-    self.redirect("/blog/")
+    self.redirect("/blog")
     
     
 def render_template(call_from, template_name, template_values=dict()):
