@@ -1,5 +1,11 @@
 #!/usr/bin/env python
 
+# They are changing Django version, need to include this
+# http://code.google.com/appengine/docs/python/tools/libraries.html#Django
+import os
+os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
+from google.appengine.dist import use_library
+use_library('django', '1.2')
 
 import wsgiref.handlers, logging
 import cgi, time, datetime
@@ -8,12 +14,6 @@ from google.appengine.ext import webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.api import users
 
-# They are changing Django version, need to include this
-# http://code.google.com/appengine/docs/python/tools/libraries.html#Django
-import os
-os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
-from google.appengine.dist import use_library
-use_library('django', '0.96')
 
 from usermodels import *  #I'm storing my models in usermodels.py
 
@@ -93,7 +93,8 @@ class BlogHandler(webapp.RequestHandler):
       b = Blog()
       s = SideBar()
       b.title = self.request.get("title")
-      b.content = self.request.get("body")
+      b.content = self.request.get("html_body")
+      b.markdown = self.request.get("user_input")
       b.tag = self.request.get("category").lower()
       s.path = self.request.get("category").lower()
       s.title = self.request.get("category").lower()
@@ -118,7 +119,8 @@ def main():
                                         ('/delete/([^/]+)?', DeleteHandler),
                                         ('/blog/([^/]+)?', BlogHandler),
                                         ('/blog', BlogHandler),
-                                        ('/partial/([^/]+)?', PartialHandler)],
+                                        ('/partial/([^/]+)?', PartialHandler),
+                                        ('/edit/([^/]+)?', EditHandler)],
                                          debug=isLocal())
                                          
   wsgiref.handlers.CGIHandler().run(application)
