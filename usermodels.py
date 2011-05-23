@@ -2,7 +2,7 @@ from google.appengine.ext import db
 
   
 class Blog(db.Model):
-  date = db.DateTimeProperty(auto_now=True)
+  date = db.DateTimeProperty(auto_now_add=True)
   title = db.StringProperty()
   tag = db.StringProperty()
   content = db.TextProperty()  # Generated HTML from showdown.js
