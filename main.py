@@ -105,7 +105,62 @@ class BlogHandler(webapp.RequestHandler):
       db.put(updated)
     
     self.redirect("/blog")
+
+
+class EditHandler(webapp.RequestHandler):
+  def get(self, resource=''):
+    #Check to see if user is an admin, and display correct link
+    admin = users.is_current_user_admin()
+    if admin:
+      admin_url = users.create_logout_url("/blog")
+      admin_url_text = 'Logout'
+    else:
+      admin_url = users.create_login_url("/blog")
+      admin_url_text = 'Login'
+  
+    #reject anything that doesn't have a key
+    if resource == '' or not admin:
+      self.redirect("/blog")
+      
+    b = Blog().get(resource)
+      
+    template_values = {
+      'resource': resource,
+      'b': b,
+      'admin': admin,
+      'admin_url': admin_url,
+      'admin_url_text': admin_url_text
+      }
     
+    render_template(self, 'templates/edit.html', template_values)
+      
+
+  def post(self, resource=''):
+    #Check to see if user is an admin, and display correct link
+    admin = users.is_current_user_admin()
+    if admin:
+      admin_url = users.create_logout_url("/blog")
+      admin_url_text = 'Logout'
+    else:
+      admin_url = users.create_login_url("/blog")
+      admin_url_text = 'Login'
+      
+    #reject anything that doesn't have a key
+    if resource == '':
+      self.redirect("/blog")
+      
+    b = Blog().get(resource)
+    #check if it found anything
+    if b and admin:
+      b.title = self.request.get("title")
+      b.content = self.request.get("html_body")
+      b.markdown = self.request.get("user_input")
+      b.tag = self.request.get("category").lower()
+      b.put()
+      
+    self.redirect("/blog")
+
+
     
 def render_template(call_from, template_name, template_values=dict()):
   path = os.path.join(os.path.dirname(__file__), template_name)

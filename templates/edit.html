@@ -2,30 +2,27 @@
 
 {% block container %}
     <div id='container'> 
-      <span id='logo'><a href="/">/blog{% if resource %}/{{ resource }}{% endif %}</a></span> 
+      <span id='logo'><a href="/">/edit</a></span> 
       <div id='primary'> 
         <h1><a href="/">&nbsp;&nbsp;&nbsp;&nbsp;by mcottondesign</a></h1>
           
         <div class='blog-content'> 
-          {% for p in posts %}
-            {% if p.title %}
+            {% if b.title %}
               <div class='posts'>
-                  
-                  <h2>{{ p.title }}</h2>
+                  <h2>{{ b.title }}</h2>
                   <div style="top: -20px; position: relative; font-size: 12px;">
-                    {{ p.date|date }} &nbsp;&nbsp;
-                    <a href="/blog/{{ p.tag }}">{{ p.tag }}</a> 
+                    {{ b.date|date }} &nbsp;&nbsp;
+                    <a href="/blog/{{ b.tag }}">{{ b.tag }}</a> 
                     {% if admin %}
-                      || <a href="/edit/{{ p.key }}">edit</a>
-                      || <a href="/delete/{{ p.key }}">remove</a>
+                      || <a href="/edit/{{ b.key }}">remove</a>
+                      || <a href="/delete/{{ b.key }}">remove</a>
                     {% endif %}
                   </div>
                   <div style="margin-top: -20px;">
-                    {{ p.content|safe }}
+                    {{ b.content|safe }}
                   </div>
               </div>
             {% endif %}
-          {% endfor %}
           
         <div class='posts'>
             {% if admin %}
@@ -50,21 +47,23 @@
               });
             </script> 
             
-            
+             
             <br>
-		    <form id="comment_form" action="/blog/" method="post"> 
+		    <form id="comment_form" action="/edit/{{ b.key }}" method="post"> 
 				<h3>Post Something New</h3>
-						<p><input id="title" name="title" placeholder="Title" type="text" size="23"/></p>
-						<p><input id="category" placeholder="Category" name="category" type="text"  size="23"/></p>
+						<p><input id="title" name="title" placeholder="Title" type="text" size="23" value="{{ b.title }}"/></p>
+						<p><input id="category" placeholder="Category" name="category" type="text"  size="23" value="{{ b.tag }}"/></p>
                       <div id="entry-container"> 
-                        <p><textarea id="user_input" placeholder="Enter Markdown" name="user_input" rows="10" cols="30"></textarea>
+                        <p><textarea id="user_input" placeholder="Enter Markdown" name="user_input" rows="10" cols="30">
+                        {{ b.markdown }}</textarea>
                         
                         <h6><a href="#" id="show_html">toggle html preview</a></h6>
                         
                         </p>
                       </div> 
                       <div id="html_preview">
-				      <p><textarea id="textbody" placeholder="HTML Preview" name="html_body" rows="10" cols="30" class="wikistyle"></textarea></p>
+				      <p><textarea id="textbody" placeholder="HTML Preview" name="html_body" rows="10" cols="30" class="wikistyle">
+				      {{ b.content }}</textarea></p>
 				      </div>
 				    <br>
 				      <!-- Add Comment Button -->
