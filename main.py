@@ -161,6 +161,37 @@ class EditHandler(webapp.RequestHandler):
     self.redirect("/blog")
 
 
+class PostHandler(webapp.RequestHandler):
+  def get(self, resource=''):
+    #Check to see if user is an admin, and display correct link
+    admin = users.is_current_user_admin()
+    if admin:
+      admin_url = users.create_logout_url("/blog")
+      admin_url_text = 'Logout'
+    else:
+      admin_url = users.create_login_url("/blog")
+      admin_url_text = 'Login'
+  
+    #reject anything that doesn't have a key
+    if resource == '' or not admin:
+      self.redirect("/blog")
+      
+    b = Blog().get(resource)
+      
+    template_values = {
+      'resource': resource,
+      'b': b,
+      'admin': admin,
+      'admin_url': admin_url,
+      'admin_url_text': admin_url_text
+      }
+    
+    render_template(self, 'templates/post.html', template_values)
+
+
+
+
+
     
 def render_template(call_from, template_name, template_values=dict()):
   path = os.path.join(os.path.dirname(__file__), template_name)
@@ -175,7 +206,8 @@ def main():
                                         ('/blog/([^/]+)?', BlogHandler),
                                         ('/blog', BlogHandler),
                                         ('/partial/([^/]+)?', PartialHandler),
-                                        ('/edit/([^/]+)?', EditHandler)],
+                                        ('/edit/([^/]+)?', EditHandler),
+                                        ('/post/([^/]+)?', PostHandler)],
                                          debug=isLocal())
                                          
   wsgiref.handlers.CGIHandler().run(application)

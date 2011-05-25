@@ -1,0 +1,45 @@
+{% extends "template.html" %}
+
+{% block container %}
+    <div id='container'> 
+      <span id='logo'><a href="/">/post</a></span> 
+      <div id='primary'> 
+        <h1><a href="/">&nbsp;&nbsp;&nbsp;&nbsp;by mcottondesign</a></h1>
+          
+        <div class='blog-content'> 
+            {% if b.title %}
+              <div class='posts'>
+                  <h2>{{ b.title }}</h2>
+                  <div style="top: -20px; position: relative; font-size: 12px;">
+                    {{ b.date|date }} &nbsp;&nbsp;
+                    <a href="/blog/{{ b.tag }}">{{ b.tag }}</a> 
+                    {% if admin %}
+                      || <a href="/edit/{{ b.key }}">edit</a>
+                      || <a href="/delete/{{ b.key }}">remove</a>
+                    {% endif %}
+                  </div>
+                  <div style="margin-top: -20px;">
+                    {{ b.content|safe }}
+                  </div>
+              </div>
+            {% endif %}
+          
+        <div class='posts'>
+			<br><br><br><br> <!-- this is so the blog post isn't behind the footer -->
+            &nbsp; <!-- this is to make sure the div always has something in it -->
+          </div>
+        </div> 
+      </div> 
+    </div>
+{% endblock %}
+
+{% block footer %} 
+      <div id='footer'>  
+        <span>
+            <a href="/">home</a> <b>||</b>
+            <a href="/blog">blog</a> <b>||</b>
+            <a href="/blog/contact">contact</a> <b>||</b>
+            <a href="{{ admin_url }}">{{ admin_url_text }}</a> 
+        </span> 
+      </div>  
+{% endblock %}
