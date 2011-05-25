@@ -70,7 +70,7 @@ class BlogHandler(webapp.RequestHandler):
       posts = Blog().gql("order by date desc").fetch(15)
     
     #Build the SideBar
-    tags = SideBar().gql("order by title asc").fetch(20)
+    tags = SideBar().gql("order by title asc")
     tags_list = []
     for t in tags:
       tags_list.append(t.title)

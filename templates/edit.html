@@ -14,7 +14,7 @@
                     {{ b.date|date }} &nbsp;&nbsp;
                     <a href="/blog/{{ b.tag }}">{{ b.tag }}</a> 
                     {% if admin %}
-                      || <a href="/edit/{{ b.key }}">remove</a>
+                      || <a href="/edit/{{ b.key }}">edit</a>
                       || <a href="/delete/{{ b.key }}">remove</a>
                     {% endif %}
                   </div>
@@ -73,19 +73,6 @@
 			<br><br><br><br> <!-- this is so the blog post isn't behind the footer -->
             &nbsp; <!-- this is to make sure the div always has something in it -->
           </div>
-        </div> 
-        <div class='blog-sidebar'> 
-          <h2></h2> 
-          <table id='stats'> 
-            {% for t in tags %}
-            <tr>  
-              <td><a href='/blog/{{ t.title|lower }}'>{{ t.title }}</a></td> 
-            </tr> 
-            {% endfor %}
-            <tr>  
-              <td><a href='/blog'>All Posts</a></td> 
-            </tr>
-          </table> 
         </div> 
       </div> 
     </div>
