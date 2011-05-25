@@ -13,6 +13,7 @@
                   <div style="top: -20px; position: relative; font-size: 12px;">
                     {{ b.date|date }} &nbsp;&nbsp;
                     <a href="/blog/{{ b.tag }}">{{ b.tag }}</a> 
+                    || <a href="/post/{{ b.key }}">permalink</a>
                     {% if admin %}
                       || <a href="/edit/{{ b.key }}">edit</a>
                       || <a href="/delete/{{ b.key }}">remove</a>

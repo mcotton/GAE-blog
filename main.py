@@ -122,17 +122,20 @@ class EditHandler(webapp.RequestHandler):
     if resource == '' or not admin:
       self.redirect("/blog")
       
-    b = Blog().get(resource)
-      
-    template_values = {
-      'resource': resource,
-      'b': b,
-      'admin': admin,
-      'admin_url': admin_url,
-      'admin_url_text': admin_url_text
-      }
+    else: 
+      b = Blog().get(resource)
+      if b is None:
+        self.redirect('/blog')
+      else:
+        template_values = {
+          'resource': resource,
+          'b': b,
+          'admin': admin,
+          'admin_url': admin_url,
+          'admin_url_text': admin_url_text
+          }
     
-    render_template(self, 'templates/edit.html', template_values)
+        render_template(self, 'templates/edit.html', template_values)
       
 
   def post(self, resource=''):
@@ -173,20 +176,20 @@ class PostHandler(webapp.RequestHandler):
       admin_url_text = 'Login'
   
     #reject anything that doesn't have a key
-    if resource == '' or not admin:
+    if resource == '':
       self.redirect("/blog")
-      
-    b = Blog().get(resource)
-      
-    template_values = {
-      'resource': resource,
-      'b': b,
-      'admin': admin,
-      'admin_url': admin_url,
-      'admin_url_text': admin_url_text
-      }
     
-    render_template(self, 'templates/post.html', template_values)
+    else:
+      b = Blog().get(resource)
+      template_values = {
+        'resource': resource,
+        'b': b,
+        'admin': admin,
+        'admin_url': admin_url,
+        'admin_url_text': admin_url_text
+        }
+    
+      render_template(self, 'templates/post.html', template_values)
 
 
 
@@ -206,7 +209,9 @@ def main():
                                         ('/blog/([^/]+)?', BlogHandler),
                                         ('/blog', BlogHandler),
                                         ('/partial/([^/]+)?', PartialHandler),
+                                        ('/edit', BlogHandler),
                                         ('/edit/([^/]+)?', EditHandler),
+                                        ('/post', BlogHandler),
                                         ('/post/([^/]+)?', PostHandler)],
                                          debug=isLocal())
                                          
