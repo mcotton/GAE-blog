@@ -1,19 +1,19 @@
 #!/usr/bin/env python
 
+
+import os
+
 # They are changing Django version, need to include this
 # http://code.google.com/appengine/docs/python/tools/libraries.html#Django
-import os, sys
-os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
 from google.appengine.dist import use_library
 use_library('django', '1.2')
+from google.appengine.ext.webapp import template
 
 import wsgiref.handlers, logging
 import cgi, time, datetime
-from google.appengine.ext.webapp import template
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.api import users
-
 
 from usermodels import *  #I'm storing my models in usermodels.py
 
@@ -63,7 +63,7 @@ class BlogHandler(webapp.RequestHandler):
     
     #Did anything come in on the url /blog/:resource
     if resource:  
-      posts = Blog().gql("where tag = :1 order by date desc", resource).fetch(25)
+      posts = Blog().gql("where tag = :1 order by date desc", resource).fetch(15)
       if len(posts) == 0:
         posts = Blog().gql("order by date desc").fetch(15)
     else:

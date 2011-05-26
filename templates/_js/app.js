@@ -2,6 +2,7 @@ $(document).ready(function() {
 	//console.log('jQuery is ready');
 	atoggle = 'forward';
 	
+	
 	// globally turn off all animations
 	if(screen.width <= 480) jQuery.fx.off = true
 	

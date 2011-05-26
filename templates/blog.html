@@ -1,6 +1,14 @@
 {% extends "template.html" %}
 
 {% block container %}
+    <script text="text/javascript">
+      $(document).ready(function(){
+        //fix for position: fixed on the iPad
+    	if(navigator.platform == 'iPad')  {
+            $("#footer").css("position", "inherit");
+        }
+      });
+    </script>
     <div id='container'> 
       <span id='logo'><a href="/">/blog{% if resource %}/{{ resource }}{% endif %}</a></span> 
       <div id='primary'> 
