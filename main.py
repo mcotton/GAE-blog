@@ -63,11 +63,11 @@ class BlogHandler(webapp.RequestHandler):
     
     #Did anything come in on the url /blog/:resource
     if resource:  
-      posts = Blog().gql("where tag = :1 order by date desc", resource).fetch(15)
+      posts = Blog().gql("where tag = :1 order by date desc", resource).fetch(10)
       if len(posts) == 0:
-        posts = Blog().gql("order by date desc").fetch(15)
+        posts = Blog().gql("order by date desc").fetch(10)
     else:
-      posts = Blog().gql("order by date desc").fetch(15)
+      posts = Blog().gql("order by date desc").fetch(10)
     
     #Build the SideBar
     tags = SideBar().gql("order by title asc")
