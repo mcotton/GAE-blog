@@ -27,5 +27,11 @@ handlers:
   static_files: templates/_images/robots.txt
   upload: templates/_images/favicon.ico
 
+- url: /gae_mini_profiler/static
+  static_dir: gae_mini_profiler/static
+  
+- url: /gae_mini_profiler/.*
+  script: gae_mini_profiler/main.py
+
 - url: /.*
   script: main.py

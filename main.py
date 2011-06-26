@@ -215,8 +215,10 @@ def main():
                                         ('/post/([^/]+)?', PostHandler)],
                                          debug=isLocal())
                                          
-  wsgiref.handlers.CGIHandler().run(application)
+  from gae_mini_profiler import profiler
+  application = profiler.ProfilerWSGIMiddleware(application)
 
+  wsgiref.handlers.CGIHandler().run(application)
 
 if __name__ == '__main__':
   main()
