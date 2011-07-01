@@ -19,11 +19,10 @@
             {% if p.title %}
               <div class='posts'>
                   
-                  <h2>{{ p.title }}</h2>
+                  <h2><a href="/post/{{ p.key }}">{{ p.title }}</a></h2>
                   <div style="top: -20px; position: relative; font-size: 12px;">
                     {{ p.date|date }} &nbsp;&nbsp;
                     <a href="/blog/{{ p.tag }}">{{ p.tag }}</a>
-                    || <a href="/post/{{ p.key }}">permalink</a>
                     {% if admin %}
                       || <a href="/edit/{{ p.key }}">edit</a>
                       || <a href="/delete/{{ p.key }}">remove</a>
