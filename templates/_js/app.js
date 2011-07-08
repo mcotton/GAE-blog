@@ -1,17 +1,17 @@
 $(document).ready(function() {
 	//console.log('jQuery is ready');
-	atoggle = 'forward';
+	var atoggle = 'forward';
 	
 	
 	// globally turn off all animations
-	if(screen.width <= 480) jQuery.fx.off = true
+	if(screen.width <= 480) jQuery.fx.off = true;
 	
 	$('.block-2 a').click(function(event) {
-    	event.preventDefault();
-    	if(atoggle == 'back')  {
-    	   atoggle = 'forward';
-    	   location.reload();
-    	}
+       event.preventDefault();
+         if(atoggle == 'back')  {
+           atoggle = 'forward';
+           location.reload();
+        }
     });
 	
 	$('#col_1').click(function() {
@@ -22,10 +22,9 @@ $(document).ready(function() {
         
         
         setTimeout(function() {
-        	$('#result').load('/partial/past')
-        	},250);
-        
-	   });
+            $('#result').load('/partial/past');
+            },250);
+       });
 	   
     $('#col_2').click(function() {
         $('#col_1').hide('slow');
@@ -35,11 +34,10 @@ $(document).ready(function() {
         
         
         setTimeout(function() {
-        	$('#result').load('/partial/current')
-        	}, 250);    	   
-	   
-	   });
-	   
+            $('#result').load('/partial/current');
+            }, 250);
+       });
+   
     $('#col_3').click(function() {
         $('#col_1').hide('slow');
         $('#col_2').hide('slow');
@@ -48,10 +46,7 @@ $(document).ready(function() {
         
         
         setTimeout(function() {
-        	$('#result').load('/partial/future')
-        	}, 250);    	   
-	   
-	   });
-	   
-    
+            $('#result').load('/partial/future');
+            }, 250);
+       });
 });
