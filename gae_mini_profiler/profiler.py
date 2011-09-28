@@ -8,7 +8,11 @@ import sys
 from types import GeneratorType
 import zlib
 
-from google.appengine.ext.webapp import template, RequestHandler
+
+from google.appengine.dist import use_library
+use_library('django', '1.2')
+from google.appengine.ext.webapp import template
+from google.appengine.ext.webapp import RequestHandler
 from google.appengine.api import memcache
 
 from gae_mini_profiler import config
