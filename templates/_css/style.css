@@ -1,12 +1,12 @@
 
   html {
-    background: #fff; }
+    background: #fafafa; }
   
   body {
     margin: 0;
     padding-top: 45px;
     font: 14px/1.4 "Myriad Pro", "Helvetica Nueue", "Lucida Grande", "Arial", sans-serif;
-    background: -webkit-gradient(linear, left top, left bottom, from(#f8f8f8), to(#fff));
+    background: -webkit-gradient(linear, left top, left bottom, from(#f8f8f8), to(#fafafa));
     text-align: center;
     -webkit-text-stroke: 0.1px #fff;
     -moz-text-stroke: 0.2px #fff;
@@ -28,7 +28,7 @@
     font-size: 14px;
     clear: both;
     height:30px;
-    background: #f8f8f8; 
+    background: #E8E8E8; 
     }
 	
   #logo {
@@ -111,7 +111,10 @@
   
   code {
     font-family: "Courier", monospace;
-    background: #fff; }
+    background: #f0f0f0; 
+    color: #111111;
+    display:block;
+    }
   
   table {
     width: 100%;
@@ -144,6 +147,52 @@
    font-weight: bold; 
    text-decoration: none;
    }
+
+    
+@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) { 
+
+  #container {
+    margin: 0 auto 0 auto;
+    padding-left: 10px;
+    text-align: left; 
+    width: 80%;    
+}
+    
+  .block-2 {
+    padding: 0 20px 0 0;
+    width: 80%;
+    float: none; }
+    
+  #result {
+    padding: 5 auto 0 auto;
+    float: none;
+  }
+
+  #partial {
+    margin: 0 auto 0 auto;
+    float: none;
+    width: 80%;
+    }
+    
+  .blog-content {
+    padding: 0 20px 0 0;
+    width: 80%;
+    float: none;
+    overflow: hidden; }
+    
+  iframe  {
+    width: 300px;
+    height: 232px;
+  }
+  
+  object  {
+    display: none;
+    width: 300px;
+    height: 232px;
+  }
+
+}
+    
 
 
 
