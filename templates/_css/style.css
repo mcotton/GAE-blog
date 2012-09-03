@@ -114,6 +114,7 @@
     background: #f0f0f0; 
     color: #111111;
     display:block;
+    overflow-x: scroll;
     }
   
   table {

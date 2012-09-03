@@ -1,3 +1,5 @@
+
+.py[cod]
 .DS_Store
 *.pyc
 gae_mini_profiler/*.pyc
