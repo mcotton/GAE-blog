@@ -194,6 +194,44 @@ class PostHandler(webapp.RequestHandler):
 
 
 
+class ExportHandler(webapp.RequestHandler):
+  def get(self, resource=''):
+  
+    #Check to see if user is an admin, and display correct link
+    admin = users.is_current_user_admin()
+    if admin:
+      admin_url = users.create_logout_url("/blog")
+      admin_url_text = 'Logout'
+    else:
+      admin_url = users.create_login_url("/blog")
+      admin_url_text = 'Login'
+    
+    #Did anything come in on the url /blog/:resource
+    if resource:  
+      posts = Blog().gql("where tag = :1 order by date desc", resource).fetch(1000)
+      if len(posts) == 0:
+        posts = Blog().gql("order by date desc").fetch(1000)
+    else:
+      posts = Blog().gql("order by date desc").fetch(1000)
+    
+    #Build the SideBar
+    tags = SideBar().gql("order by title asc")
+    tags_list = []
+    for t in tags:
+      tags_list.append(t.title)
+    
+    
+    template_values = {
+      'tags': list(set(tags_list)),
+      'resource': resource,
+      'posts': posts,
+      'admin': admin,
+      'admin_url': admin_url,
+      'admin_url_text': admin_url_text
+    }
+   
+    self.response.headers['Content-Type'] = 'application/rss+xml'
+    render_template(self, 'templates/rss.html', template_values)
 
 
     
@@ -213,7 +251,8 @@ def main():
                                         ('/edit', BlogHandler),
                                         ('/edit/([^/]+)?', EditHandler),
                                         ('/post', BlogHandler),
-                                        ('/post/([^/]+)?', PostHandler)],
+                                        ('/post/([^/]+)?', PostHandler),
+                                        ('/export', ExportHandler)],
                                          debug=isLocal())
                                          
   from gae_mini_profiler import profiler

@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<rss version="2.0">
+    <channel>
+
+    <title>blog for mcottondesign.com</title>
+    <description>blog for mcottondesign.com</description>
+    <link>http://mcottondesign.com</link>
+
+    {% for p in posts %}
+    <item>
+        <title>{{ p.title }}</title>
+        <description><![CDATA[{{ p.content|safe }}]]></description>
+        <link>http://mcottondesign3.appspot.com/post/{{ p.key }}</link>
+        <guid>http://mcottondesign3.appspot.com/post/{{ p.key }}</guid>
+    </item>
+    {% endfor %}
+
+
+    </channel>
+</rss>
