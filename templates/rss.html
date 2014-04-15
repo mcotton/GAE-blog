@@ -12,6 +12,8 @@
         <description><![CDATA[{{ p.content|safe }}]]></description>
         <link>http://mcottondesign3.appspot.com/post/{{ p.key }}</link>
         <guid>http://mcottondesign3.appspot.com/post/{{ p.key }}</guid>
+        <pubDate>{{ p.date|date:"D, d M Y H:i:s O" }}</pubDate>
+        <author>mcotton@mcottondesign.com (Mark Cotton)</author>
     </item>
     {% endfor %}
 
