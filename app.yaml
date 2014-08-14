@@ -1,10 +1,8 @@
 application: mcottondesign3-hrd
-version: clean-25
-runtime: python
+version: clean-26
+runtime: python27
 api_version: 1
-
-builtins:
-- datastore_admin: on
+threadsafe: true
 
 derived_file_type:
 - python_precompiled
@@ -15,23 +13,17 @@ handlers:
 
 - url: /css
   static_dir: templates/_css
-  
+
 - url: /js
   static_dir: templates/_js
 
 - url: /favicon.ico
   static_files: templates/_images/favicon.ico
   upload: templates/_images/favicon.ico
-  
+
 - url: /robots.txt
   static_files: templates/_images/robots.txt
   upload: templates/_images/favicon.ico
 
-- url: /gae_mini_profiler/static
-  static_dir: gae_mini_profiler/static
-  
-- url: /gae_mini_profiler/.*
-  script: gae_mini_profiler/main.py
-
 - url: /.*
-  script: main.py
+  script: main.app
