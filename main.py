@@ -5,16 +5,17 @@ import os
 
 # They are changing Django version, need to include this
 # http://code.google.com/appengine/docs/python/tools/libraries.html#Django
-from google.appengine.dist import use_library
-use_library('django', '1.2')
+
+#from google.appengine.dist import use_library
+#use_library('django', '1.2')
+#from google.appengine.ext.webapp import template
+
+
+import django
+import webapp2
+
 from google.appengine.ext.webapp import template
 
-import wsgiref.handlers
-#import logging
-#import cgi, time, datetime
-from google.appengine.ext import webapp
-from google.appengine.ext.webapp.util import run_wsgi_app
-import webapp2
 from google.appengine.api import users
 
 from usermodels import *  #I'm storing my models in usermodels.py

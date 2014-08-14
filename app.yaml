@@ -7,6 +7,13 @@ threadsafe: true
 derived_file_type:
 - python_precompiled
 
+libraries:
+- name: webapp2
+  version: latest
+  
+- name: django
+  version: "1.2"
+
 handlers:
 - url: /images
   static_dir: templates/_images
